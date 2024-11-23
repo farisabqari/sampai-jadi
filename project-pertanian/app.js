@@ -47,7 +47,11 @@ app.get('/edit/:id', (req, res) => {
   const sql = `SELECT * FROM data_pertanian WHERE id = ${req.params.id}`;
   db.query(sql, (err, result) => {
     if (err) throw err;
-    res.render('edit', { item: result[0] });
+    if (result.length > 0) {
+      res.render('edit', { item: result[0] });
+    } else {
+      res.status(404).send('Data not found');
+    }
   });
 });
 
@@ -62,14 +66,6 @@ app.post('/edit/:id', (req, res) => {
 });
 
 app.get('/delete/:id', (req, res) => {
-  const sql = `SELECT * FROM data_pertanian WHERE id = ${req.params.id}`;
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    res.render('delete', { item: result[0] });
-  });
-});
-
-app.post('/delete/:id', (req, res) => {
   const sql = `DELETE FROM data_pertanian WHERE id = ${req.params.id}`;
   db.query(sql, (err) => {
     if (err) throw err;
