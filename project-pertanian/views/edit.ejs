@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Data</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url('https://i.pinimg.com/736x/dc/2e/9e/dc2e9eb781435e94724571a6f6614d63.jpg'), url('https://i.pinimg.com/736x/92/0e/c0/920ec0c507407ed8f993dcfe695a5ac9.jpg'), url('https://i.pinimg.com/736x/dc/5e/e3/dc5ee3c36db2b706de2356b6debf5f39.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      animation: changeBackground 3s infinite;
+      font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
+    }
+    @keyframes changeBackground {
+      0% { background-image: url('https://i.pinimg.com/736x/dc/2e/9e/dc2e9eb781435e94724571a6f6614d63.jpg'); }
+      33% { background-image: url('https://i.pinimg.com/736x/92/0e/c0/920ec0c507407ed8f993dcfe695a5ac9.jpg'); }
+      66% { background-image: url('https://i.pinimg.com/736x/dc/5e/e3/dc5ee3c36db2b706de2356b6debf5f39.jpg'); }
+      100% { background-image: url('https://i.pinimg.com/736x/dc/2e/9e/dc2e9eb781435e94724571a6f6614d63.jpg'); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center" style="font-family: 'Montserrat', sans-serif; font-weight: bold; text-transform: uppercase;">EDIT DATA PERTANIAN</h1>
+    <form action="/edit/<%= item.id %>" method="POST" class="form-group">
+      <% ['nama', 'jenis', 'jumlah', 'tanggal'].forEach((field) => { %>
+        <div class="form-group">
+          <label for="<%= field %>"><%= field.charAt(0).toUpperCase() + field.slice(1) %></label>
+          <input type="<%= field === 'jumlah' ? 'number' : field === 'tanggal' ? 'date' : 'text' %>" name="<%= field %>" value="<%= field === 'tanggal' ? new Date(item[field]).toLocaleDateString('id-ID') : item[field] %>" required class="form-control">
+        </div>
+      <% }); %>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+</body>
+</html>

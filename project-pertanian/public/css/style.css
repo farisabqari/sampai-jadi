@@ -1,0 +1,33 @@
+body {
+    font-family: 'Montserrat', sans-serif; /* Ganti font menjadi Montserrat */
+    margin: 20px;
+    background-color: #f9f9f9; /* Tambahkan warna latar belakang untuk membuat tampilan lebih menarik */
+  }
+  
+  h1 {
+    color: #2c3e50;
+    text-align: center; /* Sesuaikan agar judul berada di tengah */
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ddd; /* Tambahkan border untuk membuat tampilan lebih rapi */
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    background-color: #fff; /* Tambahkan warna latar belakang untuk membuat tampilan lebih menarik */
+  }
+  
+  a {
+    text-decoration: none;
+    color: #3498db;
+    transition: color 0.2s ease; /* Tambahkan efek transisi untuk membuat tampilan lebih interaktif */
+  }
+  a:hover {
+    color: #2980b9; /* Tambahkan warna hover untuk membuat tampilan lebih menarik */
+  }
